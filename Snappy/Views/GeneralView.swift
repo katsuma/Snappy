@@ -26,7 +26,7 @@ struct GeneralView: View {
                                 Button("Open System Settings\u{2026}") {
                                     openAccessibilitySettings()
                                 }
-                                .buttonStyle(.glass)
+                                .buttonStyle(.glassProminent)
                             }
                         }
                     }
@@ -41,6 +41,7 @@ struct GeneralView: View {
                         Spacer()
                         Toggle("", isOn: $launchAtLogin)
                             .labelsHidden()
+                            .toggleStyle(.switch)
                             .onChange(of: launchAtLogin) { _, enabled in
                                 setLaunchAtLogin(enabled)
                             }
