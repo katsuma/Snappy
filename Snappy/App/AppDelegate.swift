@@ -19,7 +19,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private func setupMenuBar() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         if let button = statusItem?.button {
-            button.image = NSImage(systemSymbolName: "rectangle.3.group", accessibilityDescription: "Snappy")
+            button.image = NSImage(named: "MenuBarIcon")
             button.image?.isTemplate = true
         }
         let menu = NSMenu()
