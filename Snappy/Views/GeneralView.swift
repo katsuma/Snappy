@@ -4,6 +4,7 @@ import ServiceManagement
 struct GeneralView: View {
     @State private var accessibilityGranted = false
     @State private var launchAtLogin = false
+    @State private var pollTimer: Timer?
 
     var body: some View {
         ScrollView {
@@ -53,9 +54,16 @@ struct GeneralView: View {
             .padding(16)
         }
         .scrollContentBackground(.hidden)
-        .onAppear { refresh() }
-        .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
+        .onAppear {
             refresh()
+            // TCC changes don't fire notifications, so poll every 2s while view is visible
+            pollTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { _ in
+                DispatchQueue.main.async { accessibilityGranted = AXIsProcessTrusted() }
+            }
+        }
+        .onDisappear {
+            pollTimer?.invalidate()
+            pollTimer = nil
         }
     }
 
