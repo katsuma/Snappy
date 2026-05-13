@@ -1,0 +1,398 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0B6065BD84C98C498D7D8EDD /* KeyCombo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1127865A3AD9AC10533972A2 /* KeyCombo.swift */; };
+		0DAB90DA1C0008246362E274 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF11A3E7C507687494B655 /* PreferencesView.swift */; };
+		1772E5B7DD85E380F13CC178 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 822493401A36904651DC02E7 /* Assets.xcassets */; };
+		17A8661DBEE8DD19EFF39442 /* Shortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF66996D4C77CE3472FAF059 /* Shortcut.swift */; };
+		3165480CBBE359F88B37705C /* ShortcutRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A7A3AA4E58A5B321F0C7EF /* ShortcutRowView.swift */; };
+		4345ED5BC65015CF483D86D1 /* KeyRecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA141A5CC77D0723AA282B4 /* KeyRecorderView.swift */; };
+		4821F0DD2A15226A622E2698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F89C1D351CA6BB313D9505A /* AppDelegate.swift */; };
+		5B9BDE7C9847175F2EF8269C /* WindowMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84EF3892728C52EAABBD4B1 /* WindowMover.swift */; };
+		78C9C6555B44C08B38C1DED2 /* HotkeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8081C5A7A800F0EC0D3D51C8 /* HotkeyManager.swift */; };
+		8299A75183DF5A8F77B242CC /* SnappyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2034602EB469A05C3623A947 /* SnappyApp.swift */; };
+		895D619ED46072BFEF33A6DC /* GridRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB814490260A491E508A38D2 /* GridRegion.swift */; };
+		9626390C188A6AD3A76DAC69 /* GeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D38399524A66F169A51C06 /* GeneralView.swift */; };
+		B20AC20A562D428B8B41C802 /* ShortcutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D427546B2511BA1CC4CCF21B /* ShortcutsView.swift */; };
+		C5DFE06E7146A19942960C0E /* ShortcutStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8124C1932AC70C209E7B82A /* ShortcutStore.swift */; };
+		D2EB0F7BA2FB57C0A52B91C6 /* GridPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78DE5DE7193E708B7E4039 /* GridPickerView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1127865A3AD9AC10533972A2 /* KeyCombo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCombo.swift; sourceTree = "<group>"; };
+		2034602EB469A05C3623A947 /* SnappyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnappyApp.swift; sourceTree = "<group>"; };
+		32A7A3AA4E58A5B321F0C7EF /* ShortcutRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutRowView.swift; sourceTree = "<group>"; };
+		36D38399524A66F169A51C06 /* GeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralView.swift; sourceTree = "<group>"; };
+		3CA141A5CC77D0723AA282B4 /* KeyRecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyRecorderView.swift; sourceTree = "<group>"; };
+		3F89C1D351CA6BB313D9505A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4E78DE5DE7193E708B7E4039 /* GridPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridPickerView.swift; sourceTree = "<group>"; };
+		52D2BFDA2162EE8A775CBE79 /* Snappy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snappy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		530ABFB3B9E35C9EB96621A6 /* Snappy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Snappy.entitlements; sourceTree = "<group>"; };
+		8081C5A7A800F0EC0D3D51C8 /* HotkeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyManager.swift; sourceTree = "<group>"; };
+		822493401A36904651DC02E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AF66996D4C77CE3472FAF059 /* Shortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shortcut.swift; sourceTree = "<group>"; };
+		C0DF11A3E7C507687494B655 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
+		CD5C4BDBAF03DF7286EF8ADA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D427546B2511BA1CC4CCF21B /* ShortcutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsView.swift; sourceTree = "<group>"; };
+		E8124C1932AC70C209E7B82A /* ShortcutStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutStore.swift; sourceTree = "<group>"; };
+		E84EF3892728C52EAABBD4B1 /* WindowMover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowMover.swift; sourceTree = "<group>"; };
+		FB814490260A491E508A38D2 /* GridRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridRegion.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		15CD2E8C24F7322C999E421E /* Snappy */ = {
+			isa = PBXGroup;
+			children = (
+				FA20F4DBF7824C13A7E7B4E2 /* App */,
+				FB5F303E067CDE1F92BB3E70 /* Models */,
+				531257CE3B844469E2BF1C73 /* Resources */,
+				C18A4D3DFE840947120F6B1C /* Services */,
+				907565FBAE51329D29188E98 /* Views */,
+			);
+			path = Snappy;
+			sourceTree = "<group>";
+		};
+		531257CE3B844469E2BF1C73 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				822493401A36904651DC02E7 /* Assets.xcassets */,
+				CD5C4BDBAF03DF7286EF8ADA /* Info.plist */,
+				530ABFB3B9E35C9EB96621A6 /* Snappy.entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		819D94FE9624CEFEF44543E8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				52D2BFDA2162EE8A775CBE79 /* Snappy.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		907565FBAE51329D29188E98 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				36D38399524A66F169A51C06 /* GeneralView.swift */,
+				4E78DE5DE7193E708B7E4039 /* GridPickerView.swift */,
+				3CA141A5CC77D0723AA282B4 /* KeyRecorderView.swift */,
+				C0DF11A3E7C507687494B655 /* PreferencesView.swift */,
+				32A7A3AA4E58A5B321F0C7EF /* ShortcutRowView.swift */,
+				D427546B2511BA1CC4CCF21B /* ShortcutsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C18A4D3DFE840947120F6B1C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8081C5A7A800F0EC0D3D51C8 /* HotkeyManager.swift */,
+				E8124C1932AC70C209E7B82A /* ShortcutStore.swift */,
+				E84EF3892728C52EAABBD4B1 /* WindowMover.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		DC82E73CE018A92D6EC40496 = {
+			isa = PBXGroup;
+			children = (
+				15CD2E8C24F7322C999E421E /* Snappy */,
+				819D94FE9624CEFEF44543E8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FA20F4DBF7824C13A7E7B4E2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3F89C1D351CA6BB313D9505A /* AppDelegate.swift */,
+				2034602EB469A05C3623A947 /* SnappyApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		FB5F303E067CDE1F92BB3E70 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FB814490260A491E508A38D2 /* GridRegion.swift */,
+				1127865A3AD9AC10533972A2 /* KeyCombo.swift */,
+				AF66996D4C77CE3472FAF059 /* Shortcut.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DA7F0399C5130AD4F27DA3F9 /* Snappy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A7CC05B53D568978D634D43 /* Build configuration list for PBXNativeTarget "Snappy" */;
+			buildPhases = (
+				FC171DE84EE873A2763533AC /* Sources */,
+				CF70AC5CFCE02D16CF103DC9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Snappy;
+			packageProductDependencies = (
+			);
+			productName = Snappy;
+			productReference = 52D2BFDA2162EE8A775CBE79 /* Snappy.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6461E1F8E486586EEFA7F42F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					DA7F0399C5130AD4F27DA3F9 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 651CB18F0719F41D7C8D985A /* Build configuration list for PBXProject "Snappy" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = DC82E73CE018A92D6EC40496;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 819D94FE9624CEFEF44543E8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DA7F0399C5130AD4F27DA3F9 /* Snappy */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CF70AC5CFCE02D16CF103DC9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1772E5B7DD85E380F13CC178 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FC171DE84EE873A2763533AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4821F0DD2A15226A622E2698 /* AppDelegate.swift in Sources */,
+				9626390C188A6AD3A76DAC69 /* GeneralView.swift in Sources */,
+				D2EB0F7BA2FB57C0A52B91C6 /* GridPickerView.swift in Sources */,
+				895D619ED46072BFEF33A6DC /* GridRegion.swift in Sources */,
+				78C9C6555B44C08B38C1DED2 /* HotkeyManager.swift in Sources */,
+				0B6065BD84C98C498D7D8EDD /* KeyCombo.swift in Sources */,
+				4345ED5BC65015CF483D86D1 /* KeyRecorderView.swift in Sources */,
+				0DAB90DA1C0008246362E274 /* PreferencesView.swift in Sources */,
+				17A8661DBEE8DD19EFF39442 /* Shortcut.swift in Sources */,
+				3165480CBBE359F88B37705C /* ShortcutRowView.swift in Sources */,
+				C5DFE06E7146A19942960C0E /* ShortcutStore.swift in Sources */,
+				B20AC20A562D428B8B41C802 /* ShortcutsView.swift in Sources */,
+				8299A75183DF5A8F77B242CC /* SnappyApp.swift in Sources */,
+				5B9BDE7C9847175F2EF8269C /* WindowMover.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		89030E85E8456C89AD3BABAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Snappy/Resources/Snappy.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Snappy/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.katsuma.Snappy;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A4ED892BCF34C6650A5FE163 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		BA5F18EB5E36C6344473D8D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Snappy/Resources/Snappy.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Snappy/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.katsuma.Snappy;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E96CFDBF58D9FA5BD071F230 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		651CB18F0719F41D7C8D985A /* Build configuration list for PBXProject "Snappy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4ED892BCF34C6650A5FE163 /* Debug */,
+				E96CFDBF58D9FA5BD071F230 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		6A7CC05B53D568978D634D43 /* Build configuration list for PBXNativeTarget "Snappy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA5F18EB5E36C6344473D8D6 /* Debug */,
+				89030E85E8456C89AD3BABAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6461E1F8E486586EEFA7F42F /* Project object */;
+}
