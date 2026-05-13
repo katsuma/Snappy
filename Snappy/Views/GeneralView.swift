@@ -73,7 +73,11 @@ struct GeneralView: View {
     }
 
     private func setLaunchAtLogin(_ enabled: Bool) {
-        try? enabled ? SMAppService.mainApp.register() : SMAppService.mainApp.unregister()
+        do {
+            try enabled ? SMAppService.mainApp.register() : SMAppService.mainApp.unregister()
+        } catch {
+            // Silently ignore — fails when running from DerivedData
+        }
     }
 
     private func openAccessibilitySettings() {
