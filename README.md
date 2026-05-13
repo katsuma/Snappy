@@ -4,7 +4,7 @@ A macOS window manager inspired by [Divvy](https://mizage.com/divvy/).
 
 Assign keyboard shortcuts to grid-based regions and snap any window into place instantly.
 
-![Snappy Screenshot](docs/screenshot.png)
+![Snappy Screenshot](./settings.png)
 
 ## Features
 
