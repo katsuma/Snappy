@@ -20,7 +20,7 @@ Assign keyboard shortcuts to grid-based regions and snap any window into place i
 - macOS 26.0+
 - Apple Silicon or Intel
 
-## Building
+## Building & Installing
 
 ### Prerequisites
 
@@ -31,16 +31,23 @@ Assign keyboard shortcuts to grid-based regions and snap any window into place i
 brew install xcodegen
 ```
 
-### Steps
+### Install
 
 ```bash
 git clone https://github.com/katsuma/snappy.git
 cd snappy
-xcodegen generate
-open Snappy.xcodeproj
+make install
 ```
 
-In Xcode, open Signing & Capabilities, set your Development Team, then hit **Run** (⌘R).
+This builds the app, copies it to `~/Applications/Snappy.app`, registers it with LaunchServices, and launches it. Running from `~/Applications` is required for Accessibility permissions and Launch at Login to work correctly.
+
+### Uninstall
+
+```bash
+make clean
+```
+
+Removes `~/Applications/Snappy.app` and resets Accessibility permissions.
 
 ## First-time Setup
 
@@ -94,13 +101,13 @@ Snappy/
 
 ## Development Notes
 
-Accessibility permissions are tied to the app's code signature. Building from Xcode directly keeps the signature stable. If you rebuild from the command line and permissions reset, run:
+Accessibility permissions are tied to the app's install path and code signature. Always use `make install` rather than running directly from Xcode's DerivedData — otherwise the app icon won't appear in System Settings and permissions won't stick.
+
+If permissions get out of sync after a rebuild:
 
 ```bash
-tccutil reset Accessibility com.katsuma.Snappy
+make clean && make install
 ```
-
-Then relaunch and re-grant access.
 
 ## License
 
