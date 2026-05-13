@@ -12,23 +12,29 @@ struct ShortcutsView: View {
                 }
             }
             .listStyle(.inset)
+            .scrollContentBackground(.hidden)
 
             Divider()
+                .opacity(0.3)
 
             HStack {
                 Button("New") {
                     store.addShortcut()
                 }
+                .buttonStyle(.glass)
+
                 Spacer()
+
                 Button("Delete") {
                     if let id = store.selectedID {
                         store.deleteShortcut(id: id)
                     }
                 }
+                .buttonStyle(.glass)
                 .disabled(store.selectedID == nil)
             }
             .padding(.horizontal, 12)
-            .padding(.vertical, 8)
+            .padding(.vertical, 10)
         }
     }
 }

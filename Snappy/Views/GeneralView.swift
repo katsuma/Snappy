@@ -6,33 +6,52 @@ struct GeneralView: View {
     @State private var launchAtLogin = false
 
     var body: some View {
-        Form {
-            Section("Accessibility") {
-                if accessibilityGranted {
-                    Label("Accessibility access granted", systemImage: "checkmark.circle.fill")
-                        .foregroundStyle(.green)
-                } else {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Label("Accessibility access required", systemImage: "exclamationmark.triangle.fill")
-                            .foregroundStyle(.orange)
-                        Text("Snappy needs accessibility permission to move and resize windows.")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                        Button("Open System Settings\u{2026}") {
-                            openAccessibilitySettings()
+        ScrollView {
+            VStack(spacing: 12) {
+                // Accessibility section
+                GlassEffectContainer {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Label("Accessibility", systemImage: "accessibility")
+                            .font(.headline)
+
+                        Divider()
+
+                        if accessibilityGranted {
+                            Label("Access granted", systemImage: "checkmark.circle.fill")
+                                .foregroundStyle(.green)
+                        } else {
+                            VStack(alignment: .leading, spacing: 8) {
+                                Label("Access required to move windows", systemImage: "exclamationmark.triangle.fill")
+                                    .foregroundStyle(.orange)
+                                Button("Open System Settings\u{2026}") {
+                                    openAccessibilitySettings()
+                                }
+                                .buttonStyle(.glass)
+                            }
                         }
                     }
+                    .padding(16)
+                    .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 12))
+                }
+
+                // Login section
+                GlassEffectContainer {
+                    HStack {
+                        Label("Launch at Login", systemImage: "power")
+                        Spacer()
+                        Toggle("", isOn: $launchAtLogin)
+                            .labelsHidden()
+                            .onChange(of: launchAtLogin) { _, enabled in
+                                setLaunchAtLogin(enabled)
+                            }
+                    }
+                    .padding(16)
+                    .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 12))
                 }
             }
-
-            Section("Login") {
-                Toggle("Launch at Login", isOn: $launchAtLogin)
-                    .onChange(of: launchAtLogin) { _, enabled in
-                        setLaunchAtLogin(enabled)
-                    }
-            }
+            .padding(16)
         }
-        .formStyle(.grouped)
+        .scrollContentBackground(.hidden)
         .onAppear { refresh() }
         .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
             refresh()
@@ -45,15 +64,7 @@ struct GeneralView: View {
     }
 
     private func setLaunchAtLogin(_ enabled: Bool) {
-        do {
-            if enabled {
-                try SMAppService.mainApp.register()
-            } else {
-                try SMAppService.mainApp.unregister()
-            }
-        } catch {
-            // Silently fail - user can retry
-        }
+        try? enabled ? SMAppService.mainApp.register() : SMAppService.mainApp.unregister()
     }
 
     private func openAccessibilitySettings() {

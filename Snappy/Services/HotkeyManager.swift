@@ -65,7 +65,7 @@ final class HotkeyManager {
         let localID = nextID
         nextID += 1
 
-        var hkID = EventHotKeyID(signature: makeFourCharCode("SNPY"), id: localID)
+        let hkID = EventHotKeyID(signature: makeFourCharCode("SNPY"), id: localID)
         var ref: EventHotKeyRef?
         let err = RegisterEventHotKey(
             combo.keyCode, combo.modifiers, hkID,

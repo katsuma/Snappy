@@ -16,6 +16,7 @@ struct ShortcutRowView: View {
             KeyRecorderView(keyCombo: $shortcut.keyCombo)
                 .frame(width: 120, height: 26)
         }
-        .padding(.vertical, 4)
+        .padding(.vertical, 6)
+        .padding(.horizontal, 4)
     }
 }

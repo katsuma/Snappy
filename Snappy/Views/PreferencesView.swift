@@ -11,5 +11,6 @@ struct PreferencesView: View {
                 .tabItem { Label("Shortcuts", systemImage: "keyboard") }
         }
         .frame(width: 560, height: 440)
+        .padding(.top, 28)  // account for transparent title bar
     }
 }

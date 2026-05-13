@@ -31,15 +31,26 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc func openPreferences() {
         if preferencesWindow == nil {
-            let view = PreferencesView().environmentObject(store)
+            let view = PreferencesView()
+                .environmentObject(store)
+                .background(.clear)
+
+            let hostingView = NSHostingView(rootView: view)
+
+            let glassView = NSGlassEffectView()
+            glassView.contentView = hostingView
+
             let window = NSWindow(
                 contentRect: NSRect(x: 0, y: 0, width: 560, height: 440),
-                styleMask: [.titled, .closable, .miniaturizable],
+                styleMask: [.titled, .closable, .miniaturizable, .fullSizeContentView],
                 backing: .buffered,
                 defer: false
             )
             window.title = "Snappy"
-            window.contentView = NSHostingView(rootView: view)
+            window.titlebarAppearsTransparent = true
+            window.backgroundColor = .clear
+            window.isOpaque = false
+            window.contentView = glassView
             window.center()
             window.isReleasedWhenClosed = false
             preferencesWindow = window

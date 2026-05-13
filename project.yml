@@ -2,13 +2,13 @@ name: Snappy
 options:
   bundleIdPrefix: com.katsuma
   deploymentTarget:
-    macOS: "14.0"
+    macOS: "26.0"
   createIntermediateGroups: true
 
 settings:
   base:
     SWIFT_VERSION: "5.0"
-    MACOSX_DEPLOYMENT_TARGET: "14.0"
+    MACOSX_DEPLOYMENT_TARGET: "26.0"
     ENABLE_HARDENED_RUNTIME: YES
 
 targets:
@@ -23,7 +23,7 @@ targets:
         CFBundleDisplayName: Snappy
         LSUIElement: true
         NSAccessibilityUsageDescription: "Snappy needs accessibility access to move and resize windows."
-        LSMinimumSystemVersion: "14.0"
+        LSMinimumSystemVersion: "26.0"
         NSPrincipalClass: NSApplication
     entitlements:
       path: Snappy/Resources/Snappy.entitlements

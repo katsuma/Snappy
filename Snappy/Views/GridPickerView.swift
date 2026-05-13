@@ -19,7 +19,7 @@ struct GridPickerView: View {
                     let selected = isCellSelected(col: col, row: row)
                     ctx.fill(
                         Path(roundedRect: rect, cornerRadius: 2),
-                        with: .color(selected ? Color.primary : Color.secondary.opacity(0.3))
+                        with: .color(selected ? Color.primary.opacity(0.85) : Color.primary.opacity(0.12))
                     )
                 }
             }
@@ -39,8 +39,8 @@ struct GridPickerView: View {
                     )
                 }
         )
-        .clipShape(RoundedRectangle(cornerRadius: 3))
-        .overlay(RoundedRectangle(cornerRadius: 3).strokeBorder(Color.secondary.opacity(0.4), lineWidth: 1))
+        .clipShape(RoundedRectangle(cornerRadius: 4))
+        .overlay(RoundedRectangle(cornerRadius: 4).strokeBorder(Color.primary.opacity(0.15), lineWidth: 1))
     }
 
     private func cellAt(_ point: CGPoint) -> (col: Int, row: Int)? {
