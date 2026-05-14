@@ -2,9 +2,10 @@ import SwiftUI
 
 struct GridPickerView: View {
     @Binding var region: GridRegion?
+    var cellSize: CGFloat = 22
+    var onCommit: ((GridRegion) -> Void)? = nil
 
-    private let cellSize: CGFloat = 22
-    private let gap: CGFloat = 2
+    private let gap: CGFloat = 4
     private let cols = GridRegion.columns
     private let rows = GridRegion.rows
 
@@ -18,7 +19,7 @@ struct GridPickerView: View {
                     let rect = cellRect(col: col, row: row)
                     let selected = isCellSelected(col: col, row: row)
                     ctx.fill(
-                        Path(roundedRect: rect, cornerRadius: 2),
+                        Path(roundedRect: rect, cornerRadius: cellSize > 30 ? 6 : 2),
                         with: .color(selected ? Color.primary.opacity(0.85) : Color.primary.opacity(0.12))
                     )
                 }
@@ -37,6 +38,11 @@ struct GridPickerView: View {
                         endCol:   max(start.col, current.col),
                         endRow:   max(start.row, current.row)
                     )
+                }
+                .onEnded { _ in
+                    if let region, let onCommit {
+                        onCommit(region)
+                    }
                 }
         )
         .clipShape(RoundedRectangle(cornerRadius: 4))

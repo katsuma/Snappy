@@ -6,14 +6,15 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     var statusItem: NSStatusItem?
     var preferencesWindow: NSWindow?
 
-    let store = ShortcutStore()
+    let settings = PanelSettings()
     let windowMover = WindowMover()
+    private lazy var panelManager = SnapPanelManager(windowMover: windowMover)
     private var cancellables = Set<AnyCancellable>()
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         setupMenuBar()
-        HotkeyManager.shared.reloadAll(shortcuts: store.shortcuts, windowMover: windowMover)
-        observeShortcuts()
+        reloadHotkey()
+        observeSettings()
     }
 
     private func setupMenuBar() {
@@ -29,14 +30,26 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem?.menu = menu
     }
 
+    private func reloadHotkey() {
+        HotkeyManager.shared.set(combo: settings.openPanelCombo) { [weak self] in
+            self?.panelManager.toggle()
+        }
+    }
+
+    private func observeSettings() {
+        settings.$openPanelCombo
+            .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
+            .sink { [weak self] _ in self?.reloadHotkey() }
+            .store(in: &cancellables)
+    }
+
     @objc func openPreferences() {
         if preferencesWindow == nil {
             let view = PreferencesView()
-                .environmentObject(store)
+                .environmentObject(settings)
                 .background(.clear)
 
             let hostingView = NSHostingView(rootView: view)
-
             let glassView = NSGlassEffectView()
             glassView.contentView = hostingView
 
@@ -57,15 +70,5 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
         preferencesWindow?.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
-    }
-
-    private func observeShortcuts() {
-        store.$shortcuts
-            .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
-            .sink { [weak self] shortcuts in
-                guard let self else { return }
-                HotkeyManager.shared.reloadAll(shortcuts: shortcuts, windowMover: self.windowMover)
-            }
-            .store(in: &cancellables)
     }
 }

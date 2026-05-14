@@ -3,16 +3,7 @@ import ApplicationServices
 
 final class WindowMover {
 
-    func applyShortcut(_ shortcut: Shortcut) {
-        guard let region = shortcut.gridRegion else { return }
-        guard let app = NSWorkspace.shared.frontmostApplication else { return }
-
-        let appElement = AXUIElementCreateApplication(app.processIdentifier)
-        var value: CFTypeRef?
-        guard AXUIElementCopyAttributeValue(appElement, kAXFocusedWindowAttribute as CFString, &value) == .success,
-              let value else { return }
-        let window = value as! AXUIElement
-
+    func apply(region: GridRegion, to window: AXUIElement) {
         let screen = screenForWindow(window) ?? NSScreen.screens[0]
         let target = targetRect(for: region, on: screen)
 
@@ -30,12 +21,10 @@ final class WindowMover {
         let visible = screen.visibleFrame
         let frac = region.fractionalRect()
 
-        // NSScreen uses bottom-left origin; AX uses top-left of the primary screen
         let primaryH = NSScreen.screens[0].frame.height
 
         let nsX = visible.minX + frac.minX * visible.width
         let nsH = frac.height * visible.height
-        // Flip Y: grid row 0 = top, but NSScreen origin is at bottom
         let nsY = visible.minY + (1.0 - frac.minY - frac.height) * visible.height
         let nsW = frac.width * visible.width
 
@@ -50,7 +39,6 @@ final class WindowMover {
         var point = CGPoint.zero
         AXValueGetValue(posRef as! AXValue, .cgPoint, &point)
 
-        // AX point is top-left; convert to NSScreen bottom-left for hit-test
         let primaryH = NSScreen.screens[0].frame.height
         let nsPoint = CGPoint(x: point.x, y: primaryH - point.y)
         return NSScreen.screens.first { $0.frame.contains(nsPoint) }

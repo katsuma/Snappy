@@ -12,13 +12,28 @@ private func makeFourCharCode(_ s: String) -> FourCharCode {
 final class HotkeyManager {
     static let shared = HotkeyManager()
 
-    private var registrations: [UUID: (ref: EventHotKeyRef, handler: () -> Void)] = [:]
+    private var registration: (ref: EventHotKeyRef, handler: () -> Void)?
     private var eventHandlerRef: EventHandlerRef?
-    private var nextID: UInt32 = 1
-    private var idMap: [UInt32: UUID] = [:]
 
     private init() {
         installEventHandler()
+    }
+
+    func set(combo: KeyCombo?, handler: @escaping () -> Void) {
+        clear()
+        guard let combo else { return }
+        let hkID = EventHotKeyID(signature: makeFourCharCode("SNPY"), id: 1)
+        var ref: EventHotKeyRef?
+        let err = RegisterEventHotKey(combo.keyCode, combo.modifiers, hkID, GetApplicationEventTarget(), 0, &ref)
+        guard err == noErr, let ref else { return }
+        registration = (ref: ref, handler: handler)
+    }
+
+    func clear() {
+        if let reg = registration {
+            UnregisterEventHotKey(reg.ref)
+            registration = nil
+        }
     }
 
     private func installEventHandler() {
@@ -51,46 +66,8 @@ final class HotkeyManager {
             nil,
             &hkID
         )
-        guard err == noErr else { return err }
-        if let uuid = idMap[hkID.id], let reg = registrations[uuid] {
-            DispatchQueue.main.async { reg.handler() }
-        }
+        guard err == noErr, hkID.id == 1 else { return err }
+        DispatchQueue.main.async { self.registration?.handler() }
         return noErr
-    }
-
-    func register(shortcut: Shortcut, handler: @escaping () -> Void) {
-        guard let combo = shortcut.keyCombo else { return }
-        unregister(id: shortcut.id)
-
-        let localID = nextID
-        nextID += 1
-
-        let hkID = EventHotKeyID(signature: makeFourCharCode("SNPY"), id: localID)
-        var ref: EventHotKeyRef?
-        let err = RegisterEventHotKey(
-            combo.keyCode, combo.modifiers, hkID,
-            GetApplicationEventTarget(), 0, &ref
-        )
-        guard err == noErr, let ref else { return }
-        registrations[shortcut.id] = (ref: ref, handler: handler)
-        idMap[localID] = shortcut.id
-    }
-
-    func unregister(id: UUID) {
-        guard let reg = registrations.removeValue(forKey: id) else { return }
-        UnregisterEventHotKey(reg.ref)
-        idMap = idMap.filter { $0.value != id }
-    }
-
-    func reloadAll(shortcuts: [Shortcut], windowMover: WindowMover) {
-        for id in Array(registrations.keys) { unregister(id: id) }
-        for shortcut in shortcuts where shortcut.isEnabled
-            && shortcut.keyCombo != nil
-            && shortcut.gridRegion != nil
-        {
-            register(shortcut: shortcut) {
-                windowMover.applyShortcut(shortcut)
-            }
-        }
     }
 }
