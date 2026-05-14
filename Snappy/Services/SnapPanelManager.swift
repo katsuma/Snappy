@@ -6,6 +6,8 @@ import SwiftUI
 final class SnapPanelManager {
     private var panelWindow: NSWindow?
     private var localMonitor: Any?
+    private var workspaceObserver: Any?
+    private var lastFrontmostApp: NSRunningApplication?
     private let windowMover: WindowMover
     private let store: ShortcutStore
     private let onOpenSettings: () -> Void
@@ -14,6 +16,19 @@ final class SnapPanelManager {
         self.windowMover = windowMover
         self.store = store
         self.onOpenSettings = onOpenSettings
+        observeFrontmostApp()
+    }
+
+    private func observeFrontmostApp() {
+        workspaceObserver = NSWorkspace.shared.notificationCenter.addObserver(
+            forName: NSWorkspace.didActivateApplicationNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] notification in
+            guard let app = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication,
+                  app.bundleIdentifier != Bundle.main.bundleIdentifier else { return }
+            self?.lastFrontmostApp = app
+        }
     }
 
     func toggle() {
@@ -25,14 +40,25 @@ final class SnapPanelManager {
     }
 
     func present() {
-        // Capture target BEFORE activating Snappy
-        guard let targetApp = NSWorkspace.shared.frontmostApplication,
-              targetApp.bundleIdentifier != Bundle.main.bundleIdentifier else { return }
+        // Use current frontmost app if it's not Snappy, otherwise fall back to last known
+        let candidate = NSWorkspace.shared.frontmostApplication
+        let targetApp: NSRunningApplication
+        if let app = candidate, app.bundleIdentifier != Bundle.main.bundleIdentifier {
+            targetApp = app
+        } else if let last = lastFrontmostApp {
+            targetApp = last
+        } else {
+            return
+        }
 
         let appElement = AXUIElementCreateApplication(targetApp.processIdentifier)
         var value: CFTypeRef?
-        guard AXUIElementCopyAttributeValue(appElement, kAXFocusedWindowAttribute as CFString, &value) == .success,
-              let value else { return }
+        // Try focused window first, fall back to main window
+        let focusedOK = AXUIElementCopyAttributeValue(appElement, kAXFocusedWindowAttribute as CFString, &value) == .success
+        if !focusedOK {
+            AXUIElementCopyAttributeValue(appElement, kAXMainWindowAttribute as CFString, &value)
+        }
+        guard let value else { return }
         let targetWindow = value as! AXUIElement
 
         let view = SnapPanelView(
