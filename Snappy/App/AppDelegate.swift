@@ -4,12 +4,16 @@ import SwiftUI
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
     var statusItem: NSStatusItem?
-    var preferencesWindow: NSWindow?
+    var settingsWindow: NSWindow?
 
     let settings = PanelSettings()
     let store = ShortcutStore()
     let windowMover = WindowMover()
-    private lazy var panelManager = SnapPanelManager(windowMover: windowMover, store: store)
+    private lazy var panelManager = SnapPanelManager(
+        windowMover: windowMover,
+        store: store,
+        onOpenSettings: { [weak self] in self?.openSettings() }
+    )
     private var cancellables = Set<AnyCancellable>()
 
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -25,7 +29,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             button.image?.isTemplate = true
         }
         let menu = NSMenu()
-        menu.addItem(NSMenuItem(title: "Preferences\u{2026}", action: #selector(openPreferences), keyEquivalent: ","))
+        menu.addItem(NSMenuItem(title: "Settings\u{2026}", action: #selector(openSettings), keyEquivalent: ","))
         menu.addItem(.separator())
         menu.addItem(NSMenuItem(title: "Quit Snappy", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         statusItem?.menu = menu
@@ -49,8 +53,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             .store(in: &cancellables)
     }
 
-    @objc func openPreferences() {
-        if preferencesWindow == nil {
+    @objc func openSettings() {
+        if settingsWindow == nil {
             let view = PreferencesView()
                 .environmentObject(settings)
                 .environmentObject(store)
@@ -73,9 +77,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             window.contentView = glassView
             window.center()
             window.isReleasedWhenClosed = false
-            preferencesWindow = window
+            settingsWindow = window
         }
-        preferencesWindow?.makeKeyAndOrderFront(nil)
+        settingsWindow?.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
     }
 }

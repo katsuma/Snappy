@@ -8,10 +8,12 @@ final class SnapPanelManager {
     private var localMonitor: Any?
     private let windowMover: WindowMover
     private let store: ShortcutStore
+    private let onOpenSettings: () -> Void
 
-    init(windowMover: WindowMover, store: ShortcutStore) {
+    init(windowMover: WindowMover, store: ShortcutStore, onOpenSettings: @escaping () -> Void) {
         self.windowMover = windowMover
         self.store = store
+        self.onOpenSettings = onOpenSettings
     }
 
     func toggle() {
@@ -38,7 +40,9 @@ final class SnapPanelManager {
             onSelect: { [weak self] region in
                 self?.windowMover.apply(region: region, to: targetWindow)
                 self?.dismiss()
-            }
+            },
+            onDismiss: { [weak self] in self?.dismiss() },
+            onOpenSettings: onOpenSettings
         )
 
         let hostingView = NSHostingView(rootView: view)
@@ -46,8 +50,8 @@ final class SnapPanelManager {
         glassView.contentView = hostingView
 
         let window = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 440, height: 420),
-            styleMask: [.titled, .closable, .fullSizeContentView],
+            contentRect: NSRect(x: 0, y: 0, width: 450, height: 420),
+            styleMask: [.titled, .fullSizeContentView],
             backing: .buffered,
             defer: false
         )
@@ -58,6 +62,10 @@ final class SnapPanelManager {
         window.contentView = glassView
         window.center()
         window.isReleasedWhenClosed = false
+        window.isMovableByWindowBackground = true
+        window.standardWindowButton(.closeButton)?.isHidden = true
+        window.standardWindowButton(.miniaturizeButton)?.isHidden = true
+        window.standardWindowButton(.zoomButton)?.isHidden = true
 
         panelWindow = window
         window.makeKeyAndOrderFront(nil)
