@@ -62,7 +62,6 @@ final class SnapPanelManager {
         window.contentView = glassView
         window.center()
         window.isReleasedWhenClosed = false
-        window.isMovableByWindowBackground = true
         window.standardWindowButton(.closeButton)?.isHidden = true
         window.standardWindowButton(.miniaturizeButton)?.isHidden = true
         window.standardWindowButton(.zoomButton)?.isHidden = true
