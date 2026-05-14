@@ -2,6 +2,7 @@ import SwiftUI
 import ServiceManagement
 
 struct GeneralView: View {
+    @EnvironmentObject var settings: PanelSettings
     @State private var accessibilityGranted = false
     @State private var launchAtLogin = false
     @State private var pollTimer: Timer?
@@ -50,13 +51,42 @@ struct GeneralView: View {
                     .padding(16)
                     .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 12))
                 }
+
+                // Panel hotkey section
+                GlassEffectContainer {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Label("Panel", systemImage: "rectangle.on.rectangle")
+                            .font(.headline)
+
+                        Divider()
+
+                        HStack {
+                            Text("Use global shortcut to open panel")
+                            Spacer()
+                            Toggle("", isOn: $settings.useGlobalHotkey)
+                                .labelsHidden()
+                                .toggleStyle(.switch)
+                        }
+
+                        if settings.useGlobalHotkey {
+                            HStack {
+                                Text("Shortcut")
+                                    .foregroundStyle(.secondary)
+                                Spacer()
+                                KeyRecorderView(keyCombo: $settings.openPanelCombo)
+                                    .frame(width: 140, height: 26)
+                            }
+                        }
+                    }
+                    .padding(16)
+                    .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 12))
+                }
             }
             .padding(16)
         }
         .scrollContentBackground(.hidden)
         .onAppear {
             refresh()
-            // TCC changes don't fire notifications, so poll every 2s while view is visible
             pollTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { _ in
                 DispatchQueue.main.async { accessibilityGranted = AXIsProcessTrusted() }
             }

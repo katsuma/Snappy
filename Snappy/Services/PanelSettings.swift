@@ -2,25 +2,30 @@ import Foundation
 import Combine
 
 final class PanelSettings: ObservableObject {
+    @Published var useGlobalHotkey: Bool = false {
+        didSet { save() }
+    }
     @Published var openPanelCombo: KeyCombo? {
         didSet { save() }
     }
 
-    private let key = "openPanelCombo"
+    private let defaults = UserDefaults.standard
 
     init() {
-        if let data = UserDefaults.standard.data(forKey: key),
+        useGlobalHotkey = defaults.bool(forKey: "useGlobalHotkey")
+        if let data = defaults.data(forKey: "openPanelCombo"),
            let combo = try? JSONDecoder().decode(KeyCombo.self, from: data) {
             openPanelCombo = combo
         }
     }
 
     private func save() {
+        defaults.set(useGlobalHotkey, forKey: "useGlobalHotkey")
         if let combo = openPanelCombo,
            let data = try? JSONEncoder().encode(combo) {
-            UserDefaults.standard.set(data, forKey: key)
+            defaults.set(data, forKey: "openPanelCombo")
         } else {
-            UserDefaults.standard.removeObject(forKey: key)
+            defaults.removeObject(forKey: "openPanelCombo")
         }
     }
 }

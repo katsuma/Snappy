@@ -11,7 +11,8 @@
 		0D17E0A6F4899456865FA8F0 /* SnapPanelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392A163E788312D62FD27138 /* SnapPanelManager.swift */; };
 		0DAB90DA1C0008246362E274 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF11A3E7C507687494B655 /* PreferencesView.swift */; };
 		1772E5B7DD85E380F13CC178 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 822493401A36904651DC02E7 /* Assets.xcassets */; };
-		315553E87E72BDB63BC4B1E4 /* HotkeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F758191D029639962C79069 /* HotkeyView.swift */; };
+		17A8661DBEE8DD19EFF39442 /* Shortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF66996D4C77CE3472FAF059 /* Shortcut.swift */; };
+		3165480CBBE359F88B37705C /* ShortcutRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A7A3AA4E58A5B321F0C7EF /* ShortcutRowView.swift */; };
 		4345ED5BC65015CF483D86D1 /* KeyRecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA141A5CC77D0723AA282B4 /* KeyRecorderView.swift */; };
 		4821F0DD2A15226A622E2698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F89C1D351CA6BB313D9505A /* AppDelegate.swift */; };
 		5B9BDE7C9847175F2EF8269C /* WindowMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84EF3892728C52EAABBD4B1 /* WindowMover.swift */; };
@@ -20,6 +21,8 @@
 		8299A75183DF5A8F77B242CC /* SnappyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2034602EB469A05C3623A947 /* SnappyApp.swift */; };
 		895D619ED46072BFEF33A6DC /* GridRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB814490260A491E508A38D2 /* GridRegion.swift */; };
 		9626390C188A6AD3A76DAC69 /* GeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D38399524A66F169A51C06 /* GeneralView.swift */; };
+		B20AC20A562D428B8B41C802 /* ShortcutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D427546B2511BA1CC4CCF21B /* ShortcutsView.swift */; };
+		C5DFE06E7146A19942960C0E /* ShortcutStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8124C1932AC70C209E7B82A /* ShortcutStore.swift */; };
 		C6FD41CC7BED9136D26D36F4 /* PanelSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A56021C5619D595CDCBC74 /* PanelSettings.swift */; };
 		D2EB0F7BA2FB57C0A52B91C6 /* GridPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78DE5DE7193E708B7E4039 /* GridPickerView.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +31,7 @@
 		1127865A3AD9AC10533972A2 /* KeyCombo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCombo.swift; sourceTree = "<group>"; };
 		2034602EB469A05C3623A947 /* SnappyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnappyApp.swift; sourceTree = "<group>"; };
 		21B478E0238C9A6E291A1582 /* SnapPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapPanelView.swift; sourceTree = "<group>"; };
+		32A7A3AA4E58A5B321F0C7EF /* ShortcutRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutRowView.swift; sourceTree = "<group>"; };
 		36D38399524A66F169A51C06 /* GeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralView.swift; sourceTree = "<group>"; };
 		392A163E788312D62FD27138 /* SnapPanelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapPanelManager.swift; sourceTree = "<group>"; };
 		3CA141A5CC77D0723AA282B4 /* KeyRecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyRecorderView.swift; sourceTree = "<group>"; };
@@ -37,10 +41,12 @@
 		530ABFB3B9E35C9EB96621A6 /* Snappy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Snappy.entitlements; sourceTree = "<group>"; };
 		8081C5A7A800F0EC0D3D51C8 /* HotkeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyManager.swift; sourceTree = "<group>"; };
 		822493401A36904651DC02E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9F758191D029639962C79069 /* HotkeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyView.swift; sourceTree = "<group>"; };
+		AF66996D4C77CE3472FAF059 /* Shortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shortcut.swift; sourceTree = "<group>"; };
 		B6A56021C5619D595CDCBC74 /* PanelSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelSettings.swift; sourceTree = "<group>"; };
 		C0DF11A3E7C507687494B655 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		CD5C4BDBAF03DF7286EF8ADA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D427546B2511BA1CC4CCF21B /* ShortcutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsView.swift; sourceTree = "<group>"; };
+		E8124C1932AC70C209E7B82A /* ShortcutStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutStore.swift; sourceTree = "<group>"; };
 		E84EF3892728C52EAABBD4B1 /* WindowMover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowMover.swift; sourceTree = "<group>"; };
 		FB814490260A491E508A38D2 /* GridRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridRegion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,9 +87,10 @@
 			children = (
 				36D38399524A66F169A51C06 /* GeneralView.swift */,
 				4E78DE5DE7193E708B7E4039 /* GridPickerView.swift */,
-				9F758191D029639962C79069 /* HotkeyView.swift */,
 				3CA141A5CC77D0723AA282B4 /* KeyRecorderView.swift */,
 				C0DF11A3E7C507687494B655 /* PreferencesView.swift */,
+				32A7A3AA4E58A5B321F0C7EF /* ShortcutRowView.swift */,
+				D427546B2511BA1CC4CCF21B /* ShortcutsView.swift */,
 				21B478E0238C9A6E291A1582 /* SnapPanelView.swift */,
 			);
 			path = Views;
@@ -94,6 +101,7 @@
 			children = (
 				8081C5A7A800F0EC0D3D51C8 /* HotkeyManager.swift */,
 				B6A56021C5619D595CDCBC74 /* PanelSettings.swift */,
+				E8124C1932AC70C209E7B82A /* ShortcutStore.swift */,
 				392A163E788312D62FD27138 /* SnapPanelManager.swift */,
 				E84EF3892728C52EAABBD4B1 /* WindowMover.swift */,
 			);
@@ -122,6 +130,7 @@
 			children = (
 				FB814490260A491E508A38D2 /* GridRegion.swift */,
 				1127865A3AD9AC10533972A2 /* KeyCombo.swift */,
+				AF66996D4C77CE3472FAF059 /* Shortcut.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -201,11 +210,14 @@
 				D2EB0F7BA2FB57C0A52B91C6 /* GridPickerView.swift in Sources */,
 				895D619ED46072BFEF33A6DC /* GridRegion.swift in Sources */,
 				78C9C6555B44C08B38C1DED2 /* HotkeyManager.swift in Sources */,
-				315553E87E72BDB63BC4B1E4 /* HotkeyView.swift in Sources */,
 				0B6065BD84C98C498D7D8EDD /* KeyCombo.swift in Sources */,
 				4345ED5BC65015CF483D86D1 /* KeyRecorderView.swift in Sources */,
 				C6FD41CC7BED9136D26D36F4 /* PanelSettings.swift in Sources */,
 				0DAB90DA1C0008246362E274 /* PreferencesView.swift in Sources */,
+				17A8661DBEE8DD19EFF39442 /* Shortcut.swift in Sources */,
+				3165480CBBE359F88B37705C /* ShortcutRowView.swift in Sources */,
+				C5DFE06E7146A19942960C0E /* ShortcutStore.swift in Sources */,
+				B20AC20A562D428B8B41C802 /* ShortcutsView.swift in Sources */,
 				0D17E0A6F4899456865FA8F0 /* SnapPanelManager.swift in Sources */,
 				7A2B79059F32319ABCED9431 /* SnapPanelView.swift in Sources */,
 				8299A75183DF5A8F77B242CC /* SnappyApp.swift in Sources */,

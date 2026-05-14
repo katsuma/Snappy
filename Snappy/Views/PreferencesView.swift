@@ -2,15 +2,16 @@ import SwiftUI
 
 struct PreferencesView: View {
     @EnvironmentObject var settings: PanelSettings
+    @EnvironmentObject var store: ShortcutStore
 
     var body: some View {
         TabView {
             GeneralView()
                 .tabItem { Label("General", systemImage: "gear") }
-            HotkeyView()
-                .tabItem { Label("Hotkey", systemImage: "keyboard") }
+            ShortcutsView()
+                .tabItem { Label("Shortcuts", systemImage: "keyboard") }
         }
-        .frame(width: 560, height: 440)
+        .frame(width: 560, height: 480)
         .padding(.top, 28)
     }
 }

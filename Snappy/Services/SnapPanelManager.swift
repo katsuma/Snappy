@@ -7,9 +7,11 @@ final class SnapPanelManager {
     private var panelWindow: NSWindow?
     private var localMonitor: Any?
     private let windowMover: WindowMover
+    private let store: ShortcutStore
 
-    init(windowMover: WindowMover) {
+    init(windowMover: WindowMover, store: ShortcutStore) {
         self.windowMover = windowMover
+        self.store = store
     }
 
     func toggle() {
@@ -62,10 +64,25 @@ final class SnapPanelManager {
         NSApp.activate(ignoringOtherApps: true)
 
         localMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
+            guard let self else { return event }
+
             if event.keyCode == UInt16(kVK_Escape) {
-                self?.dismiss()
+                self.dismiss()
                 return nil
             }
+
+            let pressed = KeyCombo(
+                keyCode: UInt32(event.keyCode),
+                modifiers: KeyCombo.carbonModifiers(from: event.modifierFlags)
+            )
+            if let match = self.store.shortcuts.first(where: {
+                $0.isEnabled && $0.keyCombo == pressed && $0.gridRegion != nil
+            }) {
+                self.windowMover.apply(region: match.gridRegion!, to: targetWindow)
+                self.dismiss()
+                return nil
+            }
+
             return event
         }
     }

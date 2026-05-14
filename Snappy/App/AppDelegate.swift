@@ -7,8 +7,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     var preferencesWindow: NSWindow?
 
     let settings = PanelSettings()
+    let store = ShortcutStore()
     let windowMover = WindowMover()
-    private lazy var panelManager = SnapPanelManager(windowMover: windowMover)
+    private lazy var panelManager = SnapPanelManager(windowMover: windowMover, store: store)
     private var cancellables = Set<AnyCancellable>()
 
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -31,13 +32,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func reloadHotkey() {
-        HotkeyManager.shared.set(combo: settings.openPanelCombo) { [weak self] in
-            self?.panelManager.toggle()
+        if settings.useGlobalHotkey {
+            HotkeyManager.shared.set(combo: settings.openPanelCombo) { [weak self] in
+                self?.panelManager.toggle()
+            }
+        } else {
+            HotkeyManager.shared.clear()
         }
     }
 
     private func observeSettings() {
-        settings.$openPanelCombo
+        settings.$useGlobalHotkey
+            .combineLatest(settings.$openPanelCombo)
             .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
             .sink { [weak self] _ in self?.reloadHotkey() }
             .store(in: &cancellables)
@@ -47,6 +53,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         if preferencesWindow == nil {
             let view = PreferencesView()
                 .environmentObject(settings)
+                .environmentObject(store)
                 .background(.clear)
 
             let hostingView = NSHostingView(rootView: view)
@@ -54,7 +61,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             glassView.contentView = hostingView
 
             let window = NSWindow(
-                contentRect: NSRect(x: 0, y: 0, width: 560, height: 440),
+                contentRect: NSRect(x: 0, y: 0, width: 560, height: 480),
                 styleMask: [.titled, .closable, .miniaturizable, .fullSizeContentView],
                 backing: .buffered,
                 defer: false
