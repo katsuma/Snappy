@@ -24,7 +24,7 @@ final class SnapPanelManager {
         }
     }
 
-    private func present() {
+    func present() {
         // Capture target BEFORE activating Snappy
         guard let targetApp = NSWorkspace.shared.frontmostApplication,
               targetApp.bundleIdentifier != Bundle.main.bundleIdentifier else { return }

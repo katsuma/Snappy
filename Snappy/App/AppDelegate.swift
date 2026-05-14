@@ -20,6 +20,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         setupMenuBar()
         reloadHotkey()
         observeSettings()
+        // LSUIElement app: doesn't steal focus on launch, so frontmostApplication
+        // still points to the previous app — show panel immediately.
+        panelManager.present()
     }
 
     private func setupMenuBar() {
@@ -29,10 +32,16 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             button.image?.isTemplate = true
         }
         let menu = NSMenu()
+        menu.addItem(NSMenuItem(title: "Show Panel", action: #selector(showPanel), keyEquivalent: ""))
+        menu.addItem(.separator())
         menu.addItem(NSMenuItem(title: "Settings\u{2026}", action: #selector(openSettings), keyEquivalent: ","))
         menu.addItem(.separator())
         menu.addItem(NSMenuItem(title: "Quit Snappy", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         statusItem?.menu = menu
+    }
+
+    @objc func showPanel() {
+        panelManager.present()
     }
 
     private func reloadHotkey() {
