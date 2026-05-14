@@ -4,6 +4,9 @@ A macOS window manager inspired by [Divvy](https://mizage.com/divvy/).
 
 Open a floating panel, drag across a grid to define any region, and snap the frontmost window into place instantly.
 
+![Snappy panel](./main-panel.png)
+![Snappy settings](./settings.png)
+
 ## Features
 
 - **Floating panel** — Opens on launch and via the menu bar; shows the target app's icon and name
