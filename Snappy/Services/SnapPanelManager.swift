@@ -50,7 +50,7 @@ final class SnapPanelManager {
         glassView.contentView = hostingView
 
         let window = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 450, height: 420),
+            contentRect: NSRect(x: 0, y: 0, width: 350, height: 320),
             styleMask: [.titled, .fullSizeContentView],
             backing: .buffered,
             defer: false

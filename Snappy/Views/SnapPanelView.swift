@@ -15,47 +15,48 @@ struct SnapPanelView: View {
             HStack {
                 Button(action: onDismiss) {
                     Image(systemName: "xmark.circle.fill")
-                        .font(.title2)
+                        .font(.body)
                         .foregroundStyle(.secondary)
                 }
                 .buttonStyle(.plain)
 
                 Spacer()
 
-                HStack(spacing: 8) {
+                HStack(spacing: 6) {
                     if let icon = targetApp.icon {
                         Image(nsImage: icon)
                             .resizable()
-                            .frame(width: 28, height: 28)
+                            .frame(width: 22, height: 22)
                     }
                     Text(targetApp.localizedName ?? "")
-                        .font(.headline)
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
                 }
 
                 Spacer()
 
                 Button(action: onOpenSettings) {
                     Image(systemName: "gearshape.fill")
-                        .font(.title2)
+                        .font(.body)
                         .foregroundStyle(.secondary)
                 }
                 .buttonStyle(.plain)
             }
-            .padding(.horizontal, 16)
-            .padding(.top, 20)
-            .padding(.bottom, 14)
+            .padding(.horizontal, 14)
+            .padding(.top, 12)
+            .padding(.bottom, 8)
 
             Divider()
                 .opacity(0.3)
 
             // Grid
-            VStack(spacing: 12) {
-                GridPickerView(region: $region, cellSize: 58, onCommit: onSelect)
+            VStack(spacing: 8) {
+                GridPickerView(region: $region, cellSize: 44, onCommit: onSelect)
                 Text("Drag to select · Esc to cancel")
-                    .font(.caption)
+                    .font(.caption2)
                     .foregroundStyle(.secondary)
             }
-            .padding(20)
+            .padding(14)
         }
     }
 }
