@@ -20,6 +20,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         setupMenuBar()
         reloadHotkey()
         observeSettings()
+        if !windowMover.isAccessibilityGranted {
+            windowMover.requestAccessibilityPermission()
+        }
         // LSUIElement app: doesn't steal focus on launch, so frontmostApplication
         // still points to the previous app — show panel immediately.
         panelManager.present()

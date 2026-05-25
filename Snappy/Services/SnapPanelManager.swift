@@ -66,6 +66,7 @@ final class SnapPanelManager {
             onSelect: { [weak self] region in
                 self?.windowMover.apply(region: region, to: targetWindow)
                 self?.dismiss()
+                targetApp.activate(options: .activateIgnoringOtherApps)
             },
             onDismiss: { [weak self] in self?.dismiss() },
             onOpenSettings: onOpenSettings
@@ -113,6 +114,7 @@ final class SnapPanelManager {
             }) {
                 self.windowMover.apply(region: match.gridRegion!, to: targetWindow)
                 self.dismiss()
+                targetApp.activate(options: .activateIgnoringOtherApps)
                 return nil
             }
 
