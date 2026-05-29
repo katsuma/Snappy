@@ -43,6 +43,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem?.menu = menu
     }
 
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        panelManager.present()
+        return true
+    }
+
     @objc func showPanel() {
         panelManager.present()
     }
