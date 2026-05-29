@@ -46,7 +46,6 @@ struct GridPickerView: View {
                 }
         )
         .clipShape(RoundedRectangle(cornerRadius: 4))
-        .overlay(RoundedRectangle(cornerRadius: 4).strokeBorder(Color.primary.opacity(0.15), lineWidth: 1))
     }
 
     private func cellAt(_ point: CGPoint) -> (col: Int, row: Int)? {
