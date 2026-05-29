@@ -83,6 +83,13 @@ struct GeneralView: View {
                 }
             }
             .padding(16)
+
+            Text("Snappy \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity)
+                .padding(.top, 20)
+                .padding(.bottom, 10)
         }
         .scrollContentBackground(.hidden)
         .onAppear {
