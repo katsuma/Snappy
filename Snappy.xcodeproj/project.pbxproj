@@ -18,6 +18,7 @@
 		5B9BDE7C9847175F2EF8269C /* WindowMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84EF3892728C52EAABBD4B1 /* WindowMover.swift */; };
 		78C9C6555B44C08B38C1DED2 /* HotkeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8081C5A7A800F0EC0D3D51C8 /* HotkeyManager.swift */; };
 		7A2B79059F32319ABCED9431 /* SnapPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B478E0238C9A6E291A1582 /* SnapPanelView.swift */; };
+		7B70A35F67E17F47FDA3FB4D /* UpdateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8E6C8EF3D95B3447D9AEB /* UpdateChecker.swift */; };
 		8299A75183DF5A8F77B242CC /* SnappyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2034602EB469A05C3623A947 /* SnappyApp.swift */; };
 		895D619ED46072BFEF33A6DC /* GridRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB814490260A491E508A38D2 /* GridRegion.swift */; };
 		9626390C188A6AD3A76DAC69 /* GeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D38399524A66F169A51C06 /* GeneralView.swift */; };
@@ -43,6 +44,7 @@
 		822493401A36904651DC02E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF66996D4C77CE3472FAF059 /* Shortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shortcut.swift; sourceTree = "<group>"; };
 		B6A56021C5619D595CDCBC74 /* PanelSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelSettings.swift; sourceTree = "<group>"; };
+		B8E8E6C8EF3D95B3447D9AEB /* UpdateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChecker.swift; sourceTree = "<group>"; };
 		C0DF11A3E7C507687494B655 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		CD5C4BDBAF03DF7286EF8ADA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D427546B2511BA1CC4CCF21B /* ShortcutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsView.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				B6A56021C5619D595CDCBC74 /* PanelSettings.swift */,
 				E8124C1932AC70C209E7B82A /* ShortcutStore.swift */,
 				392A163E788312D62FD27138 /* SnapPanelManager.swift */,
+				B8E8E6C8EF3D95B3447D9AEB /* UpdateChecker.swift */,
 				E84EF3892728C52EAABBD4B1 /* WindowMover.swift */,
 			);
 			path = Services;
@@ -221,6 +224,7 @@
 				0D17E0A6F4899456865FA8F0 /* SnapPanelManager.swift in Sources */,
 				7A2B79059F32319ABCED9431 /* SnapPanelView.swift in Sources */,
 				8299A75183DF5A8F77B242CC /* SnappyApp.swift in Sources */,
+				7B70A35F67E17F47FDA3FB4D /* UpdateChecker.swift in Sources */,
 				5B9BDE7C9847175F2EF8269C /* WindowMover.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

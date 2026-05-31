@@ -26,6 +26,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         // LSUIElement app: doesn't steal focus on launch, so frontmostApplication
         // still points to the previous app — show panel immediately.
         panelManager.present()
+        UpdateChecker.checkIfNeeded()
     }
 
     private func setupMenuBar() {
