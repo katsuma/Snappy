@@ -21,7 +21,7 @@ targets:
       path: Snappy/Resources/Info.plist
       properties:
         CFBundleDisplayName: Snappy
-        CFBundleShortVersionString: "0.2.1"
+        CFBundleShortVersionString: "0.2.2"
         CFBundleVersion: "1"
         LSUIElement: true
         NSAccessibilityUsageDescription: "Snappy needs accessibility access to move and resize windows."
