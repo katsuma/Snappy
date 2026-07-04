@@ -133,7 +133,9 @@ Snappy/
 
 Accessibility permissions are tied to the app's install path and code signature. Always use `make install` rather than running directly from Xcode's DerivedData — otherwise the app icon won't appear in System Settings and permissions won't stick.
 
-If permissions get out of sync after a rebuild:
+Local builds (`make build`/`install`/`install-system`) are signed with the `Developer ID Application` identity rather than ad hoc (`-`). Ad hoc signatures change on every rebuild, which made TCC treat each rebuild as a different app and silently break the Accessibility grant — reinstalling with a stable identity keeps the grant valid across rebuilds.
+
+If permissions still get out of sync (e.g. after switching signing identities, or installing to both `~/Applications` and `/Applications`):
 
 ```bash
 make clean && make install

@@ -15,7 +15,10 @@ build:
 	xcodegen generate
 	xcodebuild -project $(APP).xcodeproj -scheme $(APP) \
 	  -configuration Debug \
-	  CODE_SIGN_STYLE=Manual CODE_SIGN_IDENTITY="-" CODE_SIGNING_REQUIRED=YES
+	  CODE_SIGN_STYLE=Manual \
+	  CODE_SIGN_IDENTITY="$(SIGN_IDENTITY)" \
+	  DEVELOPMENT_TEAM=$(TEAM_ID) \
+	  CODE_SIGNING_REQUIRED=YES
 
 install:
 	$(MAKE) build
