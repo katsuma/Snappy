@@ -36,3 +36,8 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.katsuma.Snappy
         CODE_SIGN_STYLE: Automatic
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+      configs:
+        Release:
+          CODE_SIGN_STYLE: Manual
+          CODE_SIGN_IDENTITY: "Developer ID Application"
+          DEVELOPMENT_TEAM: 72LKS454FJ

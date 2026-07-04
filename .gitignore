@@ -5,6 +5,8 @@
 DerivedData/
 .build/
 build/
+*.dmg
+*.zip
 
 # macOS
 .DS_Store
