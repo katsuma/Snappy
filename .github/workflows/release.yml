@@ -1,0 +1,74 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    env:
+      KEYCHAIN_PATH: ${{ github.workspace }}/build.keychain
+      KEYCHAIN_PASSWORD: ${{ secrets.DEVELOPER_ID_P12_PASSWORD }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install build tools
+        run: brew install xcodegen create-dmg
+
+      - name: Import signing certificate
+        run: |
+          CERT_PATH="$RUNNER_TEMP/developer_id.p12"
+          echo -n "${{ secrets.DEVELOPER_ID_P12_BASE64 }}" | base64 --decode -o "$CERT_PATH"
+
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN_PATH"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security import "$CERT_PATH" -k "$KEYCHAIN_PATH" -P "${{ secrets.DEVELOPER_ID_P12_PASSWORD }}" \
+            -T /usr/bin/codesign -T /usr/bin/security
+          security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+
+          security list-keychains -d user -s "$KEYCHAIN_PATH" $(security list-keychains -d user | sed 's/"//g')
+          security default-keychain -s "$KEYCHAIN_PATH"
+
+          rm -f "$CERT_PATH"
+
+      - name: Prepare notarization API key
+        run: |
+          KEY_PATH="$RUNNER_TEMP/notary_key.p8"
+          echo -n "${{ secrets.NOTARIZE_KEY_BASE64 }}" | base64 --decode -o "$KEY_PATH"
+          echo "NOTARY_API_KEY_PATH=$KEY_PATH" >> "$GITHUB_ENV"
+
+      - name: Build, sign and create DMG
+        run: make dmg
+
+      - name: Notarize and staple DMG
+        env:
+          NOTARY_KEY_ID: ${{ secrets.NOTARIZE_KEY_ID }}
+          NOTARY_ISSUER_ID: ${{ secrets.NOTARIZE_ISSUER_ID }}
+        run: make notarize
+
+      - name: Clean up keychain and secrets
+        if: always()
+        run: |
+          rm -f "$NOTARY_API_KEY_PATH"
+          security delete-keychain "$KEYCHAIN_PATH" || true
+
+      - name: Upload release asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" Snappy/Resources/Info.plist)
+          ASSET="Snappy-${VERSION}.dmg"
+          TAG="${{ github.ref_name }}"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$ASSET" --clobber
+          else
+            gh release create "$TAG" "$ASSET" --title "$TAG" --generate-notes
+          fi
