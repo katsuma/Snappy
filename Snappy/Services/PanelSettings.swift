@@ -3,13 +3,22 @@ import Combine
 
 final class PanelSettings: ObservableObject {
     @Published var useGlobalHotkey: Bool = false {
-        didSet { save() }
+        didSet {
+            if !isLoading {
+                save()
+            }
+        }
     }
     @Published var openPanelCombo: KeyCombo? {
-        didSet { save() }
+        didSet {
+            if !isLoading {
+                save()
+            }
+        }
     }
 
     private let defaults = UserDefaults.standard
+    private var isLoading = true
 
     init() {
         useGlobalHotkey = defaults.bool(forKey: "useGlobalHotkey")
@@ -17,6 +26,7 @@ final class PanelSettings: ObservableObject {
            let combo = try? JSONDecoder().decode(KeyCombo.self, from: data) {
             openPanelCombo = combo
         }
+        isLoading = false
     }
 
     private func save() {
